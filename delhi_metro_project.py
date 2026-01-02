@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import networkx as nx
-from geopy.distance import geodesic
+# from geopy.distance import geodesic
 
 # --- Load CSVs safely and merge coordinates ---
 @st.cache_data

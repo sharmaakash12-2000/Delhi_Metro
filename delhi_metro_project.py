@@ -13,13 +13,13 @@ def load_data():
         station_master = None
 
     try:
-        station_lines = pd.read_csv("D:\DMS-main\data\station_line_mapping.csv")
+        station_lines = pd.read_csv("station_line_mapping.csv")
     except FileNotFoundError:
         st.error("station_line_mapping.csv not found in working folder.")
         st.stop()
 
     try:
-        edges = pd.read_csv("D:\DMS-main\data\edges_table.csv")
+        edges = pd.read_csv("edges_table.csv")
     except FileNotFoundError:
         st.error("edges_table.csv not found in working folder.")
         st.stop()

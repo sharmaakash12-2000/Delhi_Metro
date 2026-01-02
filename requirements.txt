@@ -7,5 +7,6 @@ streamlit
 openpyxl
 streamlit-image-zoom
 geodesic
+geopy.distance
 
 

@@ -1,11 +1,9 @@
+streamlit
 pandas
 numpy
+geopy
 networkx
-matplotlib
-plotly
-streamlit
-openpyxl
-streamlit-image-zoom
+
 
 
 

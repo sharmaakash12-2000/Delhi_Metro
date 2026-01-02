@@ -1,0 +1,795 @@
+From_Station,To_Station,Line_Name,Travel_Time_Min
+Rithala,Rohini West,R_RD,3
+Rohini West,Rohini East,R_RD,2
+Rohini East,Pitampura,R_RD,2
+Pitampura,Kohat Enclave,R_RD,2
+Kohat Enclave,Netaji Subash Place,R_RD,2
+Netaji Subash Place,Keshav Puram,R_RD,2
+Keshav Puram,Kanhaiya Nagar,R_RD,2
+Kanhaiya Nagar,Inderlok,R_RD,2
+Inderlok,Shastri Nagar,R_RD,2
+Shastri Nagar,Pratap Nagar,R_RD,3
+Pratap Nagar,Pul Bangash,R_RD,2
+Pul Bangash,Tis Hazari,R_RD,2
+Tis Hazari,Kashmere Gate,R_RD,2
+Kashmere Gate,Shastri Park,R_RD,3
+Shastri Park,Seelam Pur,R_RD,3
+Seelam Pur,Welcome,R_RD,2
+Welcome,Shahdara,R_RD,2
+Shahdara,Mansrover park,R_RD,2
+Mansrover park,Jhilmil,R_RD,2
+Jhilmil,Dilshad Garden,R_RD,2
+Rithala,Rohini West,R_RS,3
+Rohini West,Rohini East,R_RS,2
+Rohini East,Pitampura,R_RS,2
+Pitampura,Kohat Enclave,R_RS,2
+Kohat Enclave,Netaji Subash Place,R_RS,2
+Netaji Subash Place,Keshav Puram,R_RS,2
+Keshav Puram,Kanhaiya Nagar,R_RS,2
+Kanhaiya Nagar,Inderlok,R_RS,2
+Inderlok,Shastri Nagar,R_RS,2
+Shastri Nagar,Pratap Nagar,R_RS,3
+Pratap Nagar,Pul Bangash,R_RS,2
+Pul Bangash,Tis Hazari,R_RS,2
+Tis Hazari,Kashmere Gate,R_RS,2
+Kashmere Gate,Shastri Park,R_RS,3
+Shastri Park,Seelam Pur,R_RS,3
+Seelam Pur,Welcome,R_RS,2
+Welcome,Shahdara,R_RS,2
+Shahdara,Mansrover park,R_RS,2
+Mansrover park,Jhilmil,R_RS,2
+Jhilmil,Dilshad Garden,R_RS,2
+Dilshad Garden,Shaheed Nagar,R_RS,2
+Shaheed Nagar,Raj Bagh,R_RS,2
+Raj Bagh,Major Mohit Sharma Rajender Nagar,R_RS,2
+Major Mohit Sharma Rajender Nagar,Shyam Park,R_RS,2
+Shyam Park,Mohan Nagar,R_RS,2
+Mohan Nagar,Arthala,R_RS,1
+Arthala,Hindon River,R_RS,3
+Hindon River,Shaheed Sthal (New Bus Adda),R_RS,2
+Huda City Centre,IFFCO Chowk,Y_HS,2
+IFFCO Chowk,MG Road,Y_HS,2
+MG Road,Sikanderpur,Y_HS,2
+Sikanderpur,Gurudronacharya,Y_HS,2
+Gurudronacharya,Arjan Garh,Y_HS,3
+Arjan Garh,Ghitorni,Y_HS,3
+Ghitorni,Sultanpur,Y_HS,2
+Sultanpur,Chhattarpur,Y_HS,3
+Chhattarpur,Qutab Minar,Y_HS,2
+Qutab Minar,Saket,Y_HS,3
+Saket,Malviya Nagar,Y_HS,3
+Malviya Nagar,Hauz Khas,Y_HS,3
+Hauz Khas,Green Park,Y_HS,3
+Green Park,AIIMS,Y_HS,2
+AIIMS,Dilli Haat - INA,Y_HS,2
+Dilli Haat - INA,Jorbagh,Y_HS,2
+Jorbagh,Lok Kalyan Marg,Y_HS,2
+Lok Kalyan Marg,Udyog Bhawan,Y_HS,2
+Udyog Bhawan,Central Secretariat,Y_HS,2
+Central Secretariat,Patel Chowk,Y_HS,2
+Patel Chowk,Rajiv Chowk,Y_HS,2
+Rajiv Chowk,New Delhi,Y_HS,3
+New Delhi,Chawri Bazar,Y_HS,2
+Chawri Bazar,Chandni Chowk,Y_HS,2
+Chandni Chowk,Kashmere Gate,Y_HS,2
+Kashmere Gate,Civil Lines,Y_HS,2
+Civil Lines,Vidhan Sabha,Y_HS,2
+Vidhan Sabha,Vishwavidyalaya,Y_HS,2
+Vishwavidyalaya,Guru Tegh Bahadur Nagar,Y_HS,2
+Guru Tegh Bahadur Nagar,Model Town,Y_HS,2
+Model Town,Azadpur,Y_HS,2
+Azadpur,Adarsh Nagar,Y_HS,2
+Adarsh Nagar,Jahangirpuri,Y_HS,2
+Jahangirpuri,Haiderpur Badli Mor,Y_HS,2
+Haiderpur Badli Mor,Rohini Sector 18-19,Y_HS,3
+Rohini Sector 18-19,Samaypur Badli,Y_HS,2
+Qutab Minar,Saket,Y_QV,3
+Saket,Malviya Nagar,Y_QV,3
+Malviya Nagar,Hauz Khas,Y_QV,3
+Hauz Khas,Green Park,Y_QV,3
+Green Park,AIIMS,Y_QV,2
+AIIMS,Dilli Haat - INA,Y_QV,2
+Dilli Haat - INA,Jorbagh,Y_QV,2
+Jorbagh,Lok Kalyan Marg,Y_QV,2
+Lok Kalyan Marg,Udyog Bhawan,Y_QV,2
+Udyog Bhawan,Central Secretariat,Y_QV,2
+Central Secretariat,Patel Chowk,Y_QV,2
+Patel Chowk,Rajiv Chowk,Y_QV,2
+Rajiv Chowk,New Delhi,Y_QV,3
+New Delhi,Chawri Bazar,Y_QV,2
+Chawri Bazar,Chandni Chowk,Y_QV,2
+Chandni Chowk,Kashmere Gate,Y_QV,2
+Kashmere Gate,Civil Lines,Y_QV,2
+Civil Lines,Vidhan Sabha,Y_QV,2
+Vidhan Sabha,Vishwavidyalaya,Y_QV,2
+Huda City Centre,IFFCO Chowk,Y_HQ,2
+IFFCO Chowk,MG Road,Y_HQ,2
+MG Road,Sikanderpur,Y_HQ,2
+Sikanderpur,Gurudronacharya,Y_HQ,2
+Gurudronacharya,Arjan Garh,Y_HQ,3
+Arjan Garh,Ghitorni,Y_HQ,3
+Ghitorni,Sultanpur,Y_HQ,2
+Sultanpur,Chhattarpur,Y_HQ,3
+Chhattarpur,Qutab Minar,Y_HQ,2
+Dwarka Sector - 21,Dwarka Sector - 8,B_DN,3
+Dwarka Sector - 8,Dwarka Sector - 9,B_DN,2
+Dwarka Sector - 9,Dwarka Sector - 10,B_DN,2
+Dwarka Sector - 10,Dwarka Sector - 11,B_DN,2
+Dwarka Sector - 11,Dwarka Sector - 12,B_DN,2
+Dwarka Sector - 12,Dwarka Sector - 13,B_DN,2
+Dwarka Sector - 13,Dwarka Sector - 14,B_DN,2
+Dwarka Sector - 14,Dwarka,B_DN,2
+Dwarka,Dwarka Mor,B_DN,3
+Dwarka Mor,Nawada,B_DN,2
+Nawada,Uttam Nagar West,B_DN,2
+Uttam Nagar West,Uttam Nagar East,B_DN,2
+Uttam Nagar East,Janak Puri West,B_DN,2
+Janak Puri West,Janak Puri East,B_DN,2
+Janak Puri East,Tilak Nagar,B_DN,2
+Tilak Nagar,Subash Nagar,B_DN,2
+Subash Nagar,Tagore Garden,B_DN,2
+Tagore Garden,Rajouri Garden,B_DN,2
+Rajouri Garden,Ramesh Nagar,B_DN,2
+Ramesh Nagar,Moti Nagar,B_DN,2
+Moti Nagar,Kirti Nagar,B_DN,2
+Kirti Nagar,Shadipur,B_DN,2
+Shadipur,Patel Nagar,B_DN,2
+Patel Nagar,Rajendra Place,B_DN,2
+Rajendra Place,Karol Bagh,B_DN,2
+Karol Bagh,Jhandewalan,B_DN,2
+Jhandewalan,RK Ashram Marg,B_DN,2
+RK Ashram Marg,Rajiv Chowk,B_DN,2
+Rajiv Chowk,Barakhamba,B_DN,3
+Barakhamba,Mandi House,B_DN,2
+Mandi House,Supreme Court,B_DN,2
+Supreme Court,Indraprastha,B_DN,2
+Indraprastha,Yamuna Bank,B_DN,3
+Yamuna Bank,Akshardham,B_DN,3
+Akshardham,Mayur Vihar-I,B_DN,3
+Mayur Vihar-I,Mayur Vihar Ext,B_DN,2
+Mayur Vihar Ext,New Ashok Nagar,B_DN,2
+New Ashok Nagar,Noida Sec -15,B_DN,2
+Noida Sec -15,Noida Sec -16,B_DN,2
+Noida Sec -16,Noida Sec -18,B_DN,2
+Noida Sec -18,Botanical Garden,B_DN,2
+Botanical Garden,Golf Course,B_DN,2
+Golf Course,Noida City Centre,B_DN,2
+Noida City Centre,Noida Sec-34,B_DN,2
+Noida Sec-34,Noida Sec-52,B_DN,2
+Noida Sec-52,Noida Sec-61,B_DN,2
+Noida Sec-61,Noida Sec-59,B_DN,2
+Noida Sec-59,Noida Sec-62,B_DN,2
+Noida Sec-62,Noida Electronic City,B_DN,2
+Dwarka Sector - 21,Dwarka Sector - 8,B_DV,3
+Dwarka Sector - 8,Dwarka Sector - 9,B_DV,2
+Dwarka Sector - 9,Dwarka Sector - 10,B_DV,2
+Dwarka Sector - 10,Dwarka Sector - 11,B_DV,2
+Dwarka Sector - 11,Dwarka Sector - 12,B_DV,2
+Dwarka Sector - 12,Dwarka Sector - 13,B_DV,2
+Dwarka Sector - 13,Dwarka Sector - 14,B_DV,2
+Dwarka Sector - 14,Dwarka,B_DV,2
+Dwarka,Dwarka Mor,B_DV,3
+Dwarka Mor,Nawada,B_DV,2
+Nawada,Uttam Nagar West,B_DV,2
+Uttam Nagar West,Uttam Nagar East,B_DV,2
+Uttam Nagar East,Janak Puri West,B_DV,2
+Janak Puri West,Janak Puri East,B_DV,2
+Janak Puri East,Tilak Nagar,B_DV,2
+Tilak Nagar,Subash Nagar,B_DV,2
+Subash Nagar,Tagore Garden,B_DV,2
+Tagore Garden,Rajouri Garden,B_DV,2
+Rajouri Garden,Ramesh Nagar,B_DV,2
+Ramesh Nagar,Moti Nagar,B_DV,2
+Moti Nagar,Kirti Nagar,B_DV,2
+Kirti Nagar,Shadipur,B_DV,2
+Shadipur,Patel Nagar,B_DV,2
+Patel Nagar,Rajendra Place,B_DV,2
+Rajendra Place,Karol Bagh,B_DV,2
+Karol Bagh,Jhandewalan,B_DV,2
+Jhandewalan,RK Ashram Marg,B_DV,2
+RK Ashram Marg,Rajiv Chowk,B_DV,2
+Rajiv Chowk,Barakhamba,B_DV,3
+Barakhamba,Mandi House,B_DV,2
+Mandi House,Supreme Court,B_DV,2
+Supreme Court,Indraprastha,B_DV,2
+Indraprastha,Yamuna Bank,B_DV,3
+Yamuna Bank,Laxmi Nagar,B_DV,3
+Laxmi Nagar,Nirman Vihar,B_DV,2
+Nirman Vihar,Preet Vihar,B_DV,2
+Preet Vihar,Karkarduma,B_DV,2
+Karkarduma,Anand Vihar,B_DV,2
+Anand Vihar,Kaushambi,B_DV,2
+Kaushambi,Vaishali,B_DV,3
+Kirti Nagar,Satguru Ram Singh Marg,G_KB,2
+Satguru Ram Singh Marg,Ashok Park Main,G_KB,3
+Ashok Park Main,Punjabi Bagh,G_KB,2
+Punjabi Bagh,Shivaji Park,G_KB,2
+Shivaji Park,Madipur,G_KB,2
+Madipur,Paschim Vihar (East),G_KB,2
+Paschim Vihar (East),Paschim Vihar (West),G_KB,1
+Paschim Vihar (West),Peera Garhi,G_KB,2
+Peera Garhi,Udyog Nagar,G_KB,2
+Udyog Nagar,Maharaja Surajmal Stadium,G_KB,2
+Maharaja Surajmal Stadium,Nangloi,G_KB,2
+Nangloi,Nangloi Railway Station,G_KB,2
+Nangloi Railway Station,Rajdhani Park,G_KB,2
+Rajdhani Park,Mundka,G_KB,2
+Mundka,Mundka Industrial Area (M.I.A),G_KB,2
+Mundka Industrial Area (M.I.A),Ghevra Metro station,G_KB,3
+Ghevra Metro station,Tikri Kalan,G_KB,3
+Tikri Kalan,Tikri Border,G_KB,2
+Tikri Border,Pandit Shree Ram Sharma,G_KB,2
+Pandit Shree Ram Sharma,Bahadurgarh City,G_KB,3
+Bahadurgarh City,Brigadier Hoshiyar Singh,G_KB,3
+Inderlok,Ashok Park Main,G_IB,3
+Ashok Park Main,Punjabi Bagh,G_IB,2
+Punjabi Bagh,Shivaji Park,G_IB,2
+Shivaji Park,Madipur,G_IB,2
+Madipur,Paschim Vihar (East),G_IB,2
+Paschim Vihar (East),Paschim Vihar (West),G_IB,1
+Paschim Vihar (West),Peera Garhi,G_IB,2
+Peera Garhi,Udyog Nagar,G_IB,2
+Udyog Nagar,Maharaja Surajmal Stadium,G_IB,2
+Maharaja Surajmal Stadium,Nangloi,G_IB,2
+Nangloi,Nangloi Railway Station,G_IB,2
+Nangloi Railway Station,Rajdhani Park,G_IB,2
+Rajdhani Park,Mundka,G_IB,2
+Mundka,Mundka Industrial Area (M.I.A),G_IB,2
+Mundka Industrial Area (M.I.A),Ghevra Metro station,G_IB,3
+Ghevra Metro station,Tikri Kalan,G_IB,3
+Tikri Kalan,Tikri Border,G_IB,2
+Tikri Border,Pandit Shree Ram Sharma,G_IB,2
+Pandit Shree Ram Sharma,Bahadurgarh City,G_IB,3
+Bahadurgarh City,Brigadier Hoshiyar Singh,G_IB,3
+Kashmere Gate,Lal Quila,V_KB,3
+Lal Quila,Jama Masjid,V_KB,2
+Jama Masjid,Delhi Gate,V_KB,2
+Delhi Gate,ITO,V_KB,2
+ITO,Mandi House,V_KB,2
+Mandi House,Janpath,V_KB,3
+Janpath,Central Secretariat,V_KB,1
+Central Secretariat,Khan Market,V_KB,4
+Khan Market,Jawahar Lal Nehru Stadium,V_KB,3
+Jawahar Lal Nehru Stadium,Jangpura,V_KB,2
+Jangpura,Lajpat Nagar,V_KB,3
+Lajpat Nagar,Moolchand,V_KB,2
+Moolchand,Kailash Colony,V_KB,2
+Kailash Colony,Nehru Place,V_KB,2
+Nehru Place,Kalkaji Mandir,V_KB,2
+Kalkaji Mandir,Govind Puri,V_KB,2
+Govind Puri,Harkesh Nagar Okhla,V_KB,3
+Harkesh Nagar Okhla,Jasola-Apollo,V_KB,2
+Jasola-Apollo,Sarita Vihar,V_KB,2
+Sarita Vihar,Mohan Estate,V_KB,2
+Mohan Estate,Tughlakabad Station,V_KB,3
+Tughlakabad Station,Badarpur Border,V_KB,2
+Kashmere Gate,Lal Quila,V_KR,3
+Lal Quila,Jama Masjid,V_KR,2
+Jama Masjid,Delhi Gate,V_KR,2
+Delhi Gate,ITO,V_KR,2
+ITO,Mandi House,V_KR,2
+Mandi House,Janpath,V_KR,3
+Janpath,Central Secretariat,V_KR,1
+Central Secretariat,Khan Market,V_KR,4
+Khan Market,Jawahar Lal Nehru Stadium,V_KR,3
+Jawahar Lal Nehru Stadium,Jangpura,V_KR,2
+Jangpura,Lajpat Nagar,V_KR,3
+Lajpat Nagar,Moolchand,V_KR,2
+Moolchand,Kailash Colony,V_KR,2
+Kailash Colony,Nehru Place,V_KR,2
+Nehru Place,Kalkaji Mandir,V_KR,2
+Kalkaji Mandir,Govind Puri,V_KR,2
+Govind Puri,Harkesh Nagar Okhla,V_KR,3
+Harkesh Nagar Okhla,Jasola-Apollo,V_KR,2
+Jasola-Apollo,Sarita Vihar,V_KR,2
+Sarita Vihar,Mohan Estate,V_KR,2
+Mohan Estate,Tughlakabad Station,V_KR,3
+Tughlakabad Station,Badarpur Border,V_KR,2
+Badarpur Border,Sarai,V_KR,3
+Sarai,NHPC Chowk,V_KR,3
+NHPC Chowk,Mewala Maharajpur,V_KR,2
+Mewala Maharajpur,Sector-28,V_KR,2
+Sector-28,Badkal Mor,V_KR,2
+Badkal Mor,Old Faridabad,V_KR,2
+Old Faridabad,Neelam Chowk Ajronda,V_KR,2
+Neelam Chowk Ajronda,Bata Chowk,V_KR,2
+Bata Chowk,Escorts Mujesar,V_KR,3
+Escorts Mujesar,Sant Surdas (Sihi),V_KR,2
+Sant Surdas (Sihi),Raja Nahar Singh,V_KR,6
+Majlis Park,Azadpur,P_MS,4
+Azadpur,Shalimar Bagh,P_MS,3
+Shalimar Bagh,Netaji Subash Place,P_MS,2
+Netaji Subash Place,Shakurpur,P_MS,2
+Shakurpur,Punjabi Bagh West,P_MS,4
+Punjabi Bagh West,ESI Basai Darapur,P_MS,3
+ESI Basai Darapur,Rajouri Garden,P_MS,2
+Rajouri Garden,Mayapuri,P_MS,3
+Mayapuri,Naraina Vihar,P_MS,3
+Naraina Vihar,Delhi Cantt.,P_MS,3
+Delhi Cantt.,Durgabai Deshmukh South Campus,P_MS,5
+Durgabai Deshmukh South Campus,Sir Vishweshwaraiah Moti Bagh,P_MS,2
+Sir Vishweshwaraiah Moti Bagh,Bhikaji Cama Place,P_MS,3
+Bhikaji Cama Place,Sarojini Nagar,P_MS,2
+Sarojini Nagar,Dilli Haat - INA,P_MS,2
+Dilli Haat - INA,South Extension,P_MS,2
+South Extension,Lajpat Nagar,P_MS,3
+Lajpat Nagar,Vinobapuri,P_MS,3
+Vinobapuri,Ashram,P_MS,3
+Ashram,Sarai Kale Khan - Nizamuddin,P_MS,3
+Sarai Kale Khan - Nizamuddin,Mayur Vihar-I,P_MS,5
+Mayur Vihar-I,Mayur Vihar Pocket 1,P_MS,2
+Mayur Vihar Pocket 1,Trilokpuri Sanjay Lake,P_MS,2
+Trilokpuri Sanjay Lake,East Vinod Nagar - Mayur Vihar-II,P_MS,2
+East Vinod Nagar - Mayur Vihar-II,Mandawali - West Vinod Nagar,P_MS,2
+Mandawali - West Vinod Nagar,IP Extension,P_MS,3
+IP Extension,Anand Vihar,P_MS,4
+Anand Vihar,Karkarduma,P_MS,2
+Karkarduma,Karkarduma Court,P_MS,3
+Karkarduma Court,Krishna Nagar,P_MS,2
+Krishna Nagar,East Azad Nagar,P_MS,2
+East Azad Nagar,Welcome,P_MS,3
+Welcome,Jafrabad,P_MS,3
+Jafrabad,Maujpur - Babarpur,P_MS,3
+Maujpur - Babarpur,Gokulpuri,P_MS,2
+Gokulpuri,Johri Enclave,P_MS,2
+Johri Enclave,Shiv Vihar,P_MS,2
+Janak Puri West,Dabri Mor - Janakpuri South,M_JB,3
+Dabri Mor - Janakpuri South,Dashrath Puri,M_JB,3
+Dashrath Puri,Palam,M_JB,2
+Palam,Sadar Bazar Contonment,M_JB,4
+Sadar Bazar Contonment,Terminal 1- IGI Airport,M_JB,3
+Terminal 1- IGI Airport,Shankar Vihar,M_JB,3
+Shankar Vihar,Vasant Vihar,M_JB,3
+Vasant Vihar,Munirka,M_JB,3
+Munirka,RK Puram,M_JB,2
+RK Puram,IIT,M_JB,2
+IIT,Hauz Khas,M_JB,2
+Hauz Khas,Panchsheel Park,M_JB,2
+Panchsheel Park,Chirag Delhi,M_JB,2
+Chirag Delhi,Greater Kailash,M_JB,2
+Greater Kailash,Nehru Enclave,M_JB,2
+Nehru Enclave,Kalkaji Mandir,M_JB,2
+Kalkaji Mandir,Okhla NSIC,M_JB,2
+Okhla NSIC,Sukhdev Vihar,M_JB,2
+Sukhdev Vihar,Jamia Millia Islamia,M_JB,3
+Jamia Millia Islamia,Okhla Vihar,M_JB,2
+Okhla Vihar,Jasola Vihar Shaheen Bagh,M_JB,3
+Jasola Vihar Shaheen Bagh,Kalindi Kunj,M_JB,3
+Kalindi Kunj,Okhla Bird Sanctuary,M_JB,3
+Okhla Bird Sanctuary,Botanical Garden,M_JB,4
+Dwarka,Nangli,G_DD,2
+Nangli,Najafgarh,G_DD,4
+Najafgarh,Dhansa Bus Stand,G_DD,2
+Dwarka Sector - 21,IGI Airport,O_DN,4
+IGI Airport,Delhi Aerocity,O_DN,6
+Delhi Aerocity,Dhaula Kuan,O_DN,7
+Dhaula Kuan,Shivaji Stadium,O_DN,6
+Shivaji Stadium,New Delhi,O_DN,3
+Sector 55-56 (Rapid Metro),Sector 54 Chowk (Rapid Metro),Red Line,3
+Sector 54 Chowk (Rapid Metro),Sector 53-54 (Rapid Metro),Red Line,3
+Sector 53-54 (Rapid Metro),Sector 42-43 (Rapid Metro),Red Line,3
+Sector 42-43 (Rapid Metro),Phase-I (Rapid Metro),Red Line,3
+Phase-I (Rapid Metro),Sikanderpur,Red Line,2
+Sikanderpur,Sikanderpur (Rapid Metro),Red Line,2
+Sikanderpur (Rapid Metro),Phase 2 (Rapid Metro),Red Line,6
+Phase 2 (Rapid Metro),Belvedere Towers (Rapid Metro),Red Line,12
+Belvedere Towers (Rapid Metro),Cyber City (Rapid Metro),Red Line,6
+Cyber City (Rapid Metro),Moulsari Avenue (Rapid Metro),Red Line,12
+Moulsari Avenue (Rapid Metro),Phase 3 (Rapid Metro),Red Line,12
+Noida Sector 51,Noida Sector 50,A_NN,2
+Noida Sector 50,Noida Sector 76,A_NN,2
+Noida Sector 76,Noida Sector 101,A_NN,2
+Noida Sector 101,Noida Sector 81,A_NN,2
+Noida Sector 81,NSEZ,A_NN,2
+NSEZ,Noida Sector 83,A_NN,2
+Noida Sector 83,Noida Sector 137,A_NN,2
+Noida Sector 137,Noida Sector 142,A_NN,2
+Noida Sector 142,Noida Sector 143,A_ND,2
+Noida Sector 143,Noida Sector 144,A_ND,2
+Noida Sector 144,Noida Sector 145,A_ND,2
+Noida Sector 145,Noida Sector 146,A_ND,2
+Noida Sector 146,Noida Sector 147,A_ND,2
+Noida Sector 147,Noida Sector 148,A_ND,2
+Noida Sector 148,Knowledge Park,A_ND,2
+Knowledge Park,Pari Chowk,A_ND,2
+Pari Chowk,Alpha 1,A_ND,2
+Alpha 1,Delta 1,A_ND,2
+Delta 1,GNIDA Office,A_ND,2
+GNIDA Office,Depot Station,A_ND,2
+Dilshad Garden,Jhilmil,R_RD_R,2
+Jhilmil,Mansrover park,R_RD_R,2
+Mansrover park,Shahdara,R_RD_R,2
+Shahdara,Welcome,R_RD_R,2
+Welcome,Seelam Pur,R_RD_R,2
+Seelam Pur,Shastri Park,R_RD_R,3
+Shastri Park,Kashmere Gate,R_RD_R,3
+Kashmere Gate,Tis Hazari,R_RD_R,2
+Tis Hazari,Pul Bangash,R_RD_R,2
+Pul Bangash,Pratap Nagar,R_RD_R,2
+Pratap Nagar,Shastri Nagar,R_RD_R,3
+Shastri Nagar,Inderlok,R_RD_R,2
+Inderlok,Kanhaiya Nagar,R_RD_R,2
+Kanhaiya Nagar,Keshav Puram,R_RD_R,2
+Keshav Puram,Netaji Subash Place,R_RD_R,2
+Netaji Subash Place,Kohat Enclave,R_RD_R,2
+Kohat Enclave,Pitampura,R_RD_R,2
+Pitampura,Rohini East,R_RD_R,2
+Rohini East,Rohini West,R_RD_R,2
+Rohini West,Rithala,R_RD_R,3
+Shaheed Sthal (New Bus Adda),Hindon River,R_RS_R,2
+Hindon River,Arthala,R_RS_R,3
+Arthala,Mohan Nagar,R_RS_R,1
+Mohan Nagar,Shyam Park,R_RS_R,2
+Shyam Park,Major Mohit Sharma Rajender Nagar,R_RS_R,2
+Major Mohit Sharma Rajender Nagar,Raj Bagh,R_RS_R,2
+Raj Bagh,Shaheed Nagar,R_RS_R,2
+Shaheed Nagar,Dilshad Garden,R_RS_R,2
+Dilshad Garden,Jhilmil,R_RS_R,2
+Jhilmil,Mansrover park,R_RS_R,2
+Mansrover park,Shahdara,R_RS_R,2
+Shahdara,Welcome,R_RS_R,2
+Welcome,Seelam Pur,R_RS_R,2
+Seelam Pur,Shastri Park,R_RS_R,3
+Shastri Park,Kashmere Gate,R_RS_R,3
+Kashmere Gate,Tis Hazari,R_RS_R,2
+Tis Hazari,Pul Bangash,R_RS_R,2
+Pul Bangash,Pratap Nagar,R_RS_R,2
+Pratap Nagar,Shastri Nagar,R_RS_R,3
+Shastri Nagar,Inderlok,R_RS_R,2
+Inderlok,Kanhaiya Nagar,R_RS_R,2
+Kanhaiya Nagar,Keshav Puram,R_RS_R,2
+Keshav Puram,Netaji Subash Place,R_RS_R,2
+Netaji Subash Place,Kohat Enclave,R_RS_R,2
+Kohat Enclave,Pitampura,R_RS_R,2
+Pitampura,Rohini East,R_RS_R,2
+Rohini East,Rohini West,R_RS_R,2
+Rohini West,Rithala,R_RS_R,3
+Samaypur Badli,Rohini Sector 18-19,Y_HS_R,2
+Rohini Sector 18-19,Haiderpur Badli Mor,Y_HS_R,3
+Haiderpur Badli Mor,Jahangirpuri,Y_HS_R,2
+Jahangirpuri,Adarsh Nagar,Y_HS_R,2
+Adarsh Nagar,Azadpur,Y_HS_R,2
+Azadpur,Model Town,Y_HS_R,2
+Model Town,Guru Tegh Bahadur Nagar,Y_HS_R,2
+Guru Tegh Bahadur Nagar,Vishwavidyalaya,Y_HS_R,2
+Vishwavidyalaya,Vidhan Sabha,Y_HS_R,2
+Vidhan Sabha,Civil Lines,Y_HS_R,2
+Civil Lines,Kashmere Gate,Y_HS_R,2
+Kashmere Gate,Chandni Chowk,Y_HS_R,2
+Chandni Chowk,Chawri Bazar,Y_HS_R,2
+Chawri Bazar,New Delhi,Y_HS_R,2
+New Delhi,Rajiv Chowk,Y_HS_R,3
+Rajiv Chowk,Patel Chowk,Y_HS_R,2
+Patel Chowk,Central Secretariat,Y_HS_R,2
+Central Secretariat,Udyog Bhawan,Y_HS_R,2
+Udyog Bhawan,Lok Kalyan Marg,Y_HS_R,2
+Lok Kalyan Marg,Jorbagh,Y_HS_R,2
+Jorbagh,Dilli Haat - INA,Y_HS_R,2
+Dilli Haat - INA,AIIMS,Y_HS_R,2
+AIIMS,Green Park,Y_HS_R,2
+Green Park,Hauz Khas,Y_HS_R,3
+Hauz Khas,Malviya Nagar,Y_HS_R,3
+Malviya Nagar,Saket,Y_HS_R,3
+Saket,Qutab Minar,Y_HS_R,3
+Qutab Minar,Chhattarpur,Y_HS_R,2
+Chhattarpur,Sultanpur,Y_HS_R,3
+Sultanpur,Ghitorni,Y_HS_R,2
+Ghitorni,Arjan Garh,Y_HS_R,3
+Arjan Garh,Gurudronacharya,Y_HS_R,3
+Gurudronacharya,Sikanderpur,Y_HS_R,2
+Sikanderpur,MG Road,Y_HS_R,2
+MG Road,IFFCO Chowk,Y_HS_R,2
+IFFCO Chowk,Huda City Centre,Y_HS_R,2
+Vishwavidyalaya,Vidhan Sabha,Y_QV_R,2
+Vidhan Sabha,Civil Lines,Y_QV_R,2
+Civil Lines,Kashmere Gate,Y_QV_R,2
+Kashmere Gate,Chandni Chowk,Y_QV_R,2
+Chandni Chowk,Chawri Bazar,Y_QV_R,2
+Chawri Bazar,New Delhi,Y_QV_R,2
+New Delhi,Rajiv Chowk,Y_QV_R,3
+Rajiv Chowk,Patel Chowk,Y_QV_R,2
+Patel Chowk,Central Secretariat,Y_QV_R,2
+Central Secretariat,Udyog Bhawan,Y_QV_R,2
+Udyog Bhawan,Lok Kalyan Marg,Y_QV_R,2
+Lok Kalyan Marg,Jorbagh,Y_QV_R,2
+Jorbagh,Dilli Haat - INA,Y_QV_R,2
+Dilli Haat - INA,AIIMS,Y_QV_R,2
+AIIMS,Green Park,Y_QV_R,2
+Green Park,Hauz Khas,Y_QV_R,3
+Hauz Khas,Malviya Nagar,Y_QV_R,3
+Malviya Nagar,Saket,Y_QV_R,3
+Saket,Qutab Minar,Y_QV_R,3
+Qutab Minar,Chhattarpur,Y_HQ_R,2
+Chhattarpur,Sultanpur,Y_HQ_R,3
+Sultanpur,Ghitorni,Y_HQ_R,2
+Ghitorni,Arjan Garh,Y_HQ_R,3
+Arjan Garh,Gurudronacharya,Y_HQ_R,3
+Gurudronacharya,Sikanderpur,Y_HQ_R,2
+Sikanderpur,MG Road,Y_HQ_R,2
+MG Road,IFFCO Chowk,Y_HQ_R,2
+IFFCO Chowk,Huda City Centre,Y_HQ_R,2
+Noida Electronic City,Noida Sec-62,B_DN_R,2
+Noida Sec-62,Noida Sec-59,B_DN_R,2
+Noida Sec-59,Noida Sec-61,B_DN_R,2
+Noida Sec-61,Noida Sec-52,B_DN_R,2
+Noida Sec-52,Noida Sec-34,B_DN_R,2
+Noida Sec-34,Noida City Centre,B_DN_R,2
+Noida City Centre,Golf Course,B_DN_R,2
+Golf Course,Botanical Garden,B_DN_R,2
+Botanical Garden,Noida Sec -18,B_DN_R,2
+Noida Sec -18,Noida Sec -16,B_DN_R,2
+Noida Sec -16,Noida Sec -15,B_DN_R,2
+Noida Sec -15,New Ashok Nagar,B_DN_R,2
+New Ashok Nagar,Mayur Vihar Ext,B_DN_R,2
+Mayur Vihar Ext,Mayur Vihar-I,B_DN_R,2
+Mayur Vihar-I,Akshardham,B_DN_R,3
+Akshardham,Yamuna Bank,B_DN_R,3
+Yamuna Bank,Indraprastha,B_DN_R,3
+Indraprastha,Supreme Court,B_DN_R,2
+Supreme Court,Mandi House,B_DN_R,2
+Mandi House,Barakhamba,B_DN_R,2
+Barakhamba,Rajiv Chowk,B_DN_R,3
+Rajiv Chowk,RK Ashram Marg,B_DN_R,2
+RK Ashram Marg,Jhandewalan,B_DN_R,2
+Jhandewalan,Karol Bagh,B_DN_R,2
+Karol Bagh,Rajendra Place,B_DN_R,2
+Rajendra Place,Patel Nagar,B_DN_R,2
+Patel Nagar,Shadipur,B_DN_R,2
+Shadipur,Kirti Nagar,B_DN_R,2
+Kirti Nagar,Moti Nagar,B_DN_R,2
+Moti Nagar,Ramesh Nagar,B_DN_R,2
+Ramesh Nagar,Rajouri Garden,B_DN_R,2
+Rajouri Garden,Tagore Garden,B_DN_R,2
+Tagore Garden,Subash Nagar,B_DN_R,2
+Subash Nagar,Tilak Nagar,B_DN_R,2
+Tilak Nagar,Janak Puri East,B_DN_R,2
+Janak Puri East,Janak Puri West,B_DN_R,2
+Janak Puri West,Uttam Nagar East,B_DN_R,2
+Uttam Nagar East,Uttam Nagar West,B_DN_R,2
+Uttam Nagar West,Nawada,B_DN_R,2
+Nawada,Dwarka Mor,B_DN_R,2
+Dwarka Mor,Dwarka,B_DN_R,3
+Dwarka,Dwarka Sector - 14,B_DN_R,2
+Dwarka Sector - 14,Dwarka Sector - 13,B_DN_R,2
+Dwarka Sector - 13,Dwarka Sector - 12,B_DN_R,2
+Dwarka Sector - 12,Dwarka Sector - 11,B_DN_R,2
+Dwarka Sector - 11,Dwarka Sector - 10,B_DN_R,2
+Dwarka Sector - 10,Dwarka Sector - 9,B_DN_R,2
+Dwarka Sector - 9,Dwarka Sector - 8,B_DN_R,2
+Dwarka Sector - 8,Dwarka Sector - 21,B_DN_R,3
+Vaishali,Kaushambi,B_DV_R,3
+Kaushambi,Anand Vihar,B_DV_R,2
+Anand Vihar,Karkarduma,B_DV_R,2
+Karkarduma,Preet Vihar,B_DV_R,2
+Preet Vihar,Nirman Vihar,B_DV_R,2
+Nirman Vihar,Laxmi Nagar,B_DV_R,2
+Laxmi Nagar,Yamuna Bank,B_DV_R,3
+Yamuna Bank,Indraprastha,B_DV_R,3
+Indraprastha,Supreme Court,B_DV_R,2
+Supreme Court,Mandi House,B_DV_R,2
+Mandi House,Barakhamba,B_DV_R,2
+Barakhamba,Rajiv Chowk,B_DV_R,3
+Rajiv Chowk,RK Ashram Marg,B_DV_R,2
+RK Ashram Marg,Jhandewalan,B_DV_R,2
+Jhandewalan,Karol Bagh,B_DV_R,2
+Karol Bagh,Rajendra Place,B_DV_R,2
+Rajendra Place,Patel Nagar,B_DV_R,2
+Patel Nagar,Shadipur,B_DV_R,2
+Shadipur,Kirti Nagar,B_DV_R,2
+Kirti Nagar,Moti Nagar,B_DV_R,2
+Moti Nagar,Ramesh Nagar,B_DV_R,2
+Ramesh Nagar,Rajouri Garden,B_DV_R,2
+Rajouri Garden,Tagore Garden,B_DV_R,2
+Tagore Garden,Subash Nagar,B_DV_R,2
+Subash Nagar,Tilak Nagar,B_DV_R,2
+Tilak Nagar,Janak Puri East,B_DV_R,2
+Janak Puri East,Janak Puri West,B_DV_R,2
+Janak Puri West,Uttam Nagar East,B_DV_R,2
+Uttam Nagar East,Uttam Nagar West,B_DV_R,2
+Uttam Nagar West,Nawada,B_DV_R,2
+Nawada,Dwarka Mor,B_DV_R,2
+Dwarka Mor,Dwarka,B_DV_R,3
+Dwarka,Dwarka Sector - 14,B_DV_R,2
+Dwarka Sector - 14,Dwarka Sector - 13,B_DV_R,2
+Dwarka Sector - 13,Dwarka Sector - 12,B_DV_R,2
+Dwarka Sector - 12,Dwarka Sector - 11,B_DV_R,2
+Dwarka Sector - 11,Dwarka Sector - 10,B_DV_R,2
+Dwarka Sector - 10,Dwarka Sector - 9,B_DV_R,2
+Dwarka Sector - 9,Dwarka Sector - 8,B_DV_R,2
+Dwarka Sector - 8,Dwarka Sector - 21,B_DV_R,3
+Brigadier Hoshiyar Singh,Bahadurgarh City,G_KB_R,3
+Bahadurgarh City,Pandit Shree Ram Sharma,G_KB_R,3
+Pandit Shree Ram Sharma,Tikri Border,G_KB_R,2
+Tikri Border,Tikri Kalan,G_KB_R,2
+Tikri Kalan,Ghevra Metro station,G_KB_R,3
+Ghevra Metro station,Mundka Industrial Area (M.I.A),G_KB_R,3
+Mundka Industrial Area (M.I.A),Mundka,G_KB_R,2
+Mundka,Rajdhani Park,G_KB_R,2
+Rajdhani Park,Nangloi Railway Station,G_KB_R,2
+Nangloi Railway Station,Nangloi,G_KB_R,2
+Nangloi,Maharaja Surajmal Stadium,G_KB_R,2
+Maharaja Surajmal Stadium,Udyog Nagar,G_KB_R,2
+Udyog Nagar,Peera Garhi,G_KB_R,2
+Peera Garhi,Paschim Vihar (West),G_KB_R,2
+Paschim Vihar (West),Paschim Vihar (East),G_KB_R,1
+Paschim Vihar (East),Madipur,G_KB_R,2
+Madipur,Shivaji Park,G_KB_R,2
+Shivaji Park,Punjabi Bagh,G_KB_R,2
+Punjabi Bagh,Ashok Park Main,G_KB_R,2
+Ashok Park Main,Satguru Ram Singh Marg,G_KB_R,3
+Satguru Ram Singh Marg,Kirti Nagar,G_KB_R,2
+Brigadier Hoshiyar Singh,Bahadurgarh City,G_IB_R,3
+Bahadurgarh City,Pandit Shree Ram Sharma,G_IB_R,3
+Pandit Shree Ram Sharma,Tikri Border,G_IB_R,2
+Tikri Border,Tikri Kalan,G_IB_R,2
+Tikri Kalan,Ghevra Metro station,G_IB_R,3
+Ghevra Metro station,Mundka Industrial Area (M.I.A),G_IB_R,3
+Mundka Industrial Area (M.I.A),Mundka,G_IB_R,2
+Mundka,Rajdhani Park,G_IB_R,2
+Rajdhani Park,Nangloi Railway Station,G_IB_R,2
+Nangloi Railway Station,Nangloi,G_IB_R,2
+Nangloi,Maharaja Surajmal Stadium,G_IB_R,2
+Maharaja Surajmal Stadium,Udyog Nagar,G_IB_R,2
+Udyog Nagar,Peera Garhi,G_IB_R,2
+Peera Garhi,Paschim Vihar (West),G_IB_R,2
+Paschim Vihar (West),Paschim Vihar (East),G_IB_R,1
+Paschim Vihar (East),Madipur,G_IB_R,2
+Madipur,Shivaji Park,G_IB_R,2
+Shivaji Park,Punjabi Bagh,G_IB_R,2
+Punjabi Bagh,Ashok Park Main,G_IB_R,2
+Ashok Park Main,Inderlok,G_IB_R,3
+Badarpur Border,Tughlakabad Station,V_KB_R,2
+Tughlakabad Station,Mohan Estate,V_KB_R,3
+Mohan Estate,Sarita Vihar,V_KB_R,2
+Sarita Vihar,Jasola-Apollo,V_KB_R,2
+Jasola-Apollo,Harkesh Nagar Okhla,V_KB_R,2
+Harkesh Nagar Okhla,Govind Puri,V_KB_R,3
+Govind Puri,Kalkaji Mandir,V_KB_R,2
+Kalkaji Mandir,Nehru Place,V_KB_R,2
+Nehru Place,Kailash Colony,V_KB_R,2
+Kailash Colony,Moolchand,V_KB_R,2
+Moolchand,Lajpat Nagar,V_KB_R,2
+Lajpat Nagar,Jangpura,V_KB_R,3
+Jangpura,Jawahar Lal Nehru Stadium,V_KB_R,2
+Jawahar Lal Nehru Stadium,Khan Market,V_KB_R,3
+Khan Market,Central Secretariat,V_KB_R,4
+Central Secretariat,Janpath,V_KB_R,1
+Janpath,Mandi House,V_KB_R,3
+Mandi House,ITO,V_KB_R,2
+ITO,Delhi Gate,V_KB_R,2
+Delhi Gate,Jama Masjid,V_KB_R,2
+Jama Masjid,Lal Quila,V_KB_R,2
+Lal Quila,Kashmere Gate,V_KB_R,3
+Raja Nahar Singh,Sant Surdas (Sihi),V_KR_R,6
+Sant Surdas (Sihi),Escorts Mujesar,V_KR_R,2
+Escorts Mujesar,Bata Chowk,V_KR_R,3
+Bata Chowk,Neelam Chowk Ajronda,V_KR_R,2
+Neelam Chowk Ajronda,Old Faridabad,V_KR_R,2
+Old Faridabad,Badkal Mor,V_KR_R,2
+Badkal Mor,Sector-28,V_KR_R,2
+Sector-28,Mewala Maharajpur,V_KR_R,2
+Mewala Maharajpur,NHPC Chowk,V_KR_R,2
+NHPC Chowk,Sarai,V_KR_R,3
+Sarai,Badarpur Border,V_KR_R,3
+Badarpur Border,Tughlakabad Station,V_KR_R,2
+Tughlakabad Station,Mohan Estate,V_KR_R,3
+Mohan Estate,Sarita Vihar,V_KR_R,2
+Sarita Vihar,Jasola-Apollo,V_KR_R,2
+Jasola-Apollo,Harkesh Nagar Okhla,V_KR_R,2
+Harkesh Nagar Okhla,Govind Puri,V_KR_R,3
+Govind Puri,Kalkaji Mandir,V_KR_R,2
+Kalkaji Mandir,Nehru Place,V_KR_R,2
+Nehru Place,Kailash Colony,V_KR_R,2
+Kailash Colony,Moolchand,V_KR_R,2
+Moolchand,Lajpat Nagar,V_KR_R,2
+Lajpat Nagar,Jangpura,V_KR_R,3
+Jangpura,Jawahar Lal Nehru Stadium,V_KR_R,2
+Jawahar Lal Nehru Stadium,Khan Market,V_KR_R,3
+Khan Market,Central Secretariat,V_KR_R,4
+Central Secretariat,Janpath,V_KR_R,1
+Janpath,Mandi House,V_KR_R,3
+Mandi House,ITO,V_KR_R,2
+ITO,Delhi Gate,V_KR_R,2
+Delhi Gate,Jama Masjid,V_KR_R,2
+Jama Masjid,Lal Quila,V_KR_R,2
+Lal Quila,Kashmere Gate,V_KR_R,3
+Shiv Vihar,Johri Enclave,P_MS_R,2
+Johri Enclave,Gokulpuri,P_MS_R,2
+Gokulpuri,Maujpur - Babarpur,P_MS_R,2
+Maujpur - Babarpur,Jafrabad,P_MS_R,3
+Jafrabad,Welcome,P_MS_R,3
+Welcome,East Azad Nagar,P_MS_R,3
+East Azad Nagar,Krishna Nagar,P_MS_R,2
+Krishna Nagar,Karkarduma Court,P_MS_R,2
+Karkarduma Court,Karkarduma,P_MS_R,3
+Karkarduma,Anand Vihar,P_MS_R,2
+Anand Vihar,IP Extension,P_MS_R,4
+IP Extension,Mandawali - West Vinod Nagar,P_MS_R,3
+Mandawali - West Vinod Nagar,East Vinod Nagar - Mayur Vihar-II,P_MS_R,2
+East Vinod Nagar - Mayur Vihar-II,Trilokpuri Sanjay Lake,P_MS_R,2
+Trilokpuri Sanjay Lake,Mayur Vihar Pocket 1,P_MS_R,2
+Mayur Vihar Pocket 1,Mayur Vihar-I,P_MS_R,2
+Mayur Vihar-I,Sarai Kale Khan - Nizamuddin,P_MS_R,5
+Sarai Kale Khan - Nizamuddin,Ashram,P_MS_R,3
+Ashram,Vinobapuri,P_MS_R,3
+Vinobapuri,Lajpat Nagar,P_MS_R,3
+Lajpat Nagar,South Extension,P_MS_R,3
+South Extension,Dilli Haat - INA,P_MS_R,2
+Dilli Haat - INA,Sarojini Nagar,P_MS_R,2
+Sarojini Nagar,Bhikaji Cama Place,P_MS_R,2
+Bhikaji Cama Place,Sir Vishweshwaraiah Moti Bagh,P_MS_R,3
+Sir Vishweshwaraiah Moti Bagh,Durgabai Deshmukh South Campus,P_MS_R,2
+Durgabai Deshmukh South Campus,Delhi Cantt.,P_MS_R,5
+Delhi Cantt.,Naraina Vihar,P_MS_R,3
+Naraina Vihar,Mayapuri,P_MS_R,3
+Mayapuri,Rajouri Garden,P_MS_R,3
+Rajouri Garden,ESI Basai Darapur,P_MS_R,2
+ESI Basai Darapur,Punjabi Bagh West,P_MS_R,3
+Punjabi Bagh West,Shakurpur,P_MS_R,4
+Shakurpur,Netaji Subash Place,P_MS_R,2
+Netaji Subash Place,Shalimar Bagh,P_MS_R,2
+Shalimar Bagh,Azadpur,P_MS_R,3
+Azadpur,Majlis Park,P_MS_R,4
+Botanical Garden,Okhla Bird Sanctuary,M_JB_R,4
+Okhla Bird Sanctuary,Kalindi Kunj,M_JB_R,3
+Kalindi Kunj,Jasola Vihar Shaheen Bagh,M_JB_R,3
+Jasola Vihar Shaheen Bagh,Okhla Vihar,M_JB_R,3
+Okhla Vihar,Jamia Millia Islamia,M_JB_R,2
+Jamia Millia Islamia,Sukhdev Vihar,M_JB_R,3
+Sukhdev Vihar,Okhla NSIC,M_JB_R,2
+Okhla NSIC,Kalkaji Mandir,M_JB_R,2
+Kalkaji Mandir,Nehru Enclave,M_JB_R,2
+Nehru Enclave,Greater Kailash,M_JB_R,2
+Greater Kailash,Chirag Delhi,M_JB_R,2
+Chirag Delhi,Panchsheel Park,M_JB_R,2
+Panchsheel Park,Hauz Khas,M_JB_R,2
+Hauz Khas,IIT,M_JB_R,2
+IIT,RK Puram,M_JB_R,2
+RK Puram,Munirka,M_JB_R,2
+Munirka,Vasant Vihar,M_JB_R,3
+Vasant Vihar,Shankar Vihar,M_JB_R,3
+Shankar Vihar,Terminal 1- IGI Airport,M_JB_R,3
+Terminal 1- IGI Airport,Sadar Bazar Contonment,M_JB_R,3
+Sadar Bazar Contonment,Palam,M_JB_R,4
+Palam,Dashrath Puri,M_JB_R,2
+Dashrath Puri,Dabri Mor - Janakpuri South,M_JB_R,3
+Dabri Mor - Janakpuri South,Janak Puri West,M_JB_R,3
+Dhansa Bus Stand,Najafgarh,G_DD_R,2
+Najafgarh,Nangli,G_DD_R,4
+Nangli,Dwarka,G_DD_R,2
+New Delhi,Shivaji Stadium,O_DN_R,3
+Shivaji Stadium,Dhaula Kuan,O_DN_R,6
+Dhaula Kuan,Delhi Aerocity,O_DN_R,7
+Delhi Aerocity,IGI Airport,O_DN_R,6
+IGI Airport,Dwarka Sector - 21,O_DN_R,4
+Phase 3 (Rapid Metro),Moulsari Avenue (Rapid Metro),Red Line_R,3
+Moulsari Avenue (Rapid Metro),Cyber City (Rapid Metro),Red Line_R,3
+Cyber City (Rapid Metro),Belvedere Towers (Rapid Metro),Red Line_R,3
+Belvedere Towers (Rapid Metro),Phase 2 (Rapid Metro),Red Line_R,3
+Phase 2 (Rapid Metro),Sikanderpur (Rapid Metro),Red Line_R,6
+Sikanderpur (Rapid Metro),Sikanderpur,Red Line_R,2
+Sikanderpur,Phase-I (Rapid Metro),Red Line_R,2
+Phase-I (Rapid Metro),Sector 42-43 (Rapid Metro),Red Line_R,3
+Sector 42-43 (Rapid Metro),Sector 53-54 (Rapid Metro),Red Line_R,3
+Sector 53-54 (Rapid Metro),Sector 54 Chowk (Rapid Metro),Red Line_R,3
+Sector 54 Chowk (Rapid Metro),Sector 55-56 (Rapid Metro),Red Line_R,3
+Noida Sector 142,Noida Sector 137,A_NN_R,2
+Noida Sector 137,Noida Sector 83,A_NN_R,2
+Noida Sector 83,NSEZ,A_NN_R,2
+NSEZ,Noida Sector 81,A_NN_R,2
+Noida Sector 81,Noida Sector 101,A_NN_R,2
+Noida Sector 101,Noida Sector 76,A_NN_R,2
+Noida Sector 76,Noida Sector 50,A_NN_R,2
+Noida Sector 50,Noida Sector 51,A_NN_R,2
+Depot Station,GNIDA Office,A_ND_R,2
+GNIDA Office,Delta 1,A_ND_R,2
+Delta 1,Alpha 1,A_ND_R,2
+Alpha 1,Pari Chowk,A_ND_R,2
+Pari Chowk,Knowledge Park,A_ND_R,2
+Knowledge Park,Noida Sector 148,A_ND_R,2
+Noida Sector 148,Noida Sector 147,A_ND_R,2
+Noida Sector 147,Noida Sector 146,A_ND_R,2
+Noida Sector 146,Noida Sector 145,A_ND_R,2
+Noida Sector 145,Noida Sector 144,A_ND_R,2
+Noida Sector 144,Noida Sector 143,A_ND_R,2
+Noida Sector 143,Noida Sector 142,A_ND_R,2

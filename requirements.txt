@@ -6,4 +6,6 @@ plotly
 streamlit
 openpyxl
 streamlit-image-zoom
+geodesic
+
 

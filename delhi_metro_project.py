@@ -2,269 +2,199 @@ import streamlit as st
 import pandas as pd
 import networkx as nx
 from geopy.distance import geodesic
+import os
 
-# --- Load CSVs safely and merge coordinates ---
+# ---------------- PAGE CONFIG ----------------
+st.set_page_config(page_title="Delhi Metro Route Finder", layout="wide")
+
+# ---------------- CSS ----------------
+st.markdown("""
+<style>
+.block-container { max-width:1100px; padding-top:1.2rem; }
+
+.route-box {
+    background:#0f172a;
+    color:white;
+    padding:12px 16px;
+    border-radius:10px;
+    margin-bottom:6px;
+    border-left:5px solid #38bdf8;
+}
+
+.junction-box {
+    margin-left:26px;
+    margin-bottom:14px;
+    color:#facc15;
+    font-size:14px;
+}
+
+.footer {
+    text-align:center;
+    color:#94a3b8;
+    margin-top:40px;
+    font-size:14px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# ---------------- LINE NAME MAP ----------------
+LINE_NAME_MAP = {
+    "B_DN_R": "Blue Line",
+    "B_DV_R": "Blue Line",
+    "Y_QV_R": "Yellow Line",
+    "R_RD_R": "Red Line",
+    "P_MS_R": "Pink Line",
+    "V_KR_R": "Violet Line",
+    "M_JB_R": "Magenta Line",
+    "G_KB_R": "Green Line",
+    "A_NN_R": "Aqua Line",
+    "O_DN_R": "Airport Express Line"
+}
+
+def friendly_line(code):
+    return LINE_NAME_MAP.get(code, code)
+
+# ---------------- DMRC FARE ----------------
+def dmrc_fare(dist):
+    if dist <= 2: return 11
+    if dist <= 5: return 21
+    if dist <= 12: return 32
+    if dist <= 21: return 43
+    if dist <= 32: return 54
+    return 64
+
+# ---------------- LOAD DATA ----------------
 @st.cache_data
 def load_data():
-    # Try loading all three files (station_master optional but recommended)
-    try:
-        station_master = pd.read_csv("station_master.csv")
-    except FileNotFoundError:
-        station_master = None
+    sm = pd.read_excel("data/stations_master.xlsx")
+    lm = pd.read_csv("data/station_line_mapping.csv")
+    ed = pd.read_csv("data/edges_table.csv")
 
-    try:
-        station_lines = pd.read_csv("station_line_mapping.csv")
-    except FileNotFoundError:
-        st.error("station_line_mapping.csv not found in working folder.")
-        st.stop()
+    for df in [sm, lm, ed]:
+        df.columns = df.columns.str.lower().str.strip()
 
-    try:
-        edges = pd.read_csv("edges_table.csv")
-    except FileNotFoundError:
-        st.error("edges_table.csv not found in working folder.")
-        st.stop()
+    lm = lm.merge(
+        sm[["station_name","latitude","longitude"]],
+        on="station_name",
+        how="left"
+    )
+    return lm, ed
 
-    # Normalize column names: strip + lower
-    def clean_cols(df):
-        df.columns = df.columns.str.strip().str.lower()
-        return df
-
-    station_lines = clean_cols(station_lines)
-    edges = clean_cols(edges)
-    if station_master is not None:
-        station_master = clean_cols(station_master)
-
-    # Standardize common column names if variants exist
-    station_lines.rename(columns={
-        'station id': 'station_id',
-        'station id ': 'station_id',
-        'station_name': 'station_name',  # keep if already OK
-        'station name': 'station_name',
-        'station': 'station_name',
-        'line name': 'line_name',
-        'line': 'line_name',
-        'sequence order': 'sequence_order',
-        'sequence_order': 'sequence_order'
-    }, inplace=True)
-
-    edges.rename(columns={
-        'from': 'from_station',
-        'source': 'from_station',
-        'from_station': 'from_station',
-        'to': 'to_station',
-        'destination': 'to_station',
-        'to_station': 'to_station',
-        'line name': 'line_name',
-        'line': 'line_name',
-        'travel_time_min': 'travel_time_min',
-        'travel time min': 'travel_time_min'
-    }, inplace=True)
-
-    if station_master is not None:
-        station_master.rename(columns={
-            'station id': 'station_id',
-            'station name': 'station_name',
-            'station_name': 'station_name',
-            'lat': 'latitude',
-            'latitude': 'latitude',
-            'lon': 'longitude',
-            'lng': 'longitude',
-            'longitude': 'longitude'
-        }, inplace=True)
-
-    # Merge coords into station_lines if station_master present
-    if station_master is not None and 'station_name' in station_master.columns:
-        # keep only station_name, latitude, longitude from master (if they exist)
-        cols_to_take = []
-        if 'station_name' in station_master.columns:
-            cols_to_take.append('station_name')
-        if 'latitude' in station_master.columns:
-            cols_to_take.append('latitude')
-        if 'longitude' in station_master.columns:
-            cols_to_take.append('longitude')
-
-        if 'latitude' in station_master.columns and 'longitude' in station_master.columns:
-            station_lines = station_lines.merge(
-                station_master[cols_to_take].drop_duplicates(subset=['station_name']),
-                on='station_name',
-                how='left'
-            )
-
-    return station_lines, edges
-
-# --- Load Data ---
 stations, edges = load_data()
 
-# Debug prints (uncomment temporarily if you want to see columns in console)
-# print("STATIONS COLUMNS:", stations.columns.tolist())
-# print("EDGES COLUMNS:", edges.columns.tolist())
+# ---------------- HELPERS ----------------
+def get_line_terminals(line):
+    df = stations[stations["line_name"] == line].sort_values("sequence_order")
+    if df.empty:
+        return None, None
+    return df.iloc[0]["station_name"], df.iloc[-1]["station_name"]
 
-# --- Column mapping (standard lowercase names) ---
-station_col = "station_name"
-lat_col = "latitude"
-lon_col = "longitude"
-line_col = "line_name"
-source_col = "from_station"
-target_col = "to_station"
-time_col = "travel_time_min"
+def get_direction(curr, nxt, line):
+    df = stations[stations["line_name"] == line]
+    c = df[df["station_name"] == curr]["sequence_order"].values
+    n = df[df["station_name"] == nxt]["sequence_order"].values
+    if len(c)==0 or len(n)==0:
+        return None
+    start, end = get_line_terminals(line)
+    return f"Towards {end}" if n[0] > c[0] else f"Towards {start}"
 
-# --- Validate required columns presence (but allow missing lat/lon if edges have travel times) ---
-missing_required = []
-for c in [station_col, line_col, source_col, target_col]:
-    if c not in stations.columns and c not in edges.columns:
-        missing_required.append(c)
-
-# Edges must have from/to
-if source_col not in edges.columns or target_col not in edges.columns:
-    st.error("❌ edges_table.csv must contain From/To station columns. Check column names.")
-    st.stop()
-
-# Stations must have station_name
-if station_col not in stations.columns:
-    st.error("❌ station_line_mapping.csv must contain Station_Name column. Check column names.")
-    st.stop()
-
-# --- Parameters ---
-INTERCHANGE_TIME = 1  # minutes extra for line change
-DWELL_TIME = 0.2      # minutes per station
-AVG_SPEED_KMH = 80    # average metro speed
-DEFAULT_EDGE_TIME = 2  # fallback minutes if nothing else available
-
-# Helper: try to get travel_time from edges table (symmetric search)
-def get_edge_travel_time(a, b):
-    # look for a->b or b->a
-    mask = ((edges[source_col] == a) & (edges[target_col] == b)) | ((edges[source_col] == b) & (edges[target_col] == a))
-    rows = edges[mask]
-    if not rows.empty:
-        # prefer numeric travel_time_min column if present
-        if time_col in rows.columns:
-            val = rows.iloc[0][time_col]
-            try:
-                return float(val)
-            except Exception:
-                return DEFAULT_EDGE_TIME
-        else:
-            return DEFAULT_EDGE_TIME
-    return None
-
-# --- Function to calculate travel time (robust) ---
-def calculate_travel_time(from_station, to_station):
-    # 1) Prefer explicit travel time in edges_table if present
-    t = get_edge_travel_time(from_station, to_station)
-    if t is not None:
-        return t
-
-    # 2) If coordinates present in stations dataframe, use geodesic
-    try:
-        if lat_col in stations.columns and lon_col in stations.columns:
-            lat1 = stations.loc[stations[station_col] == from_station, lat_col].values
-            lon1 = stations.loc[stations[station_col] == from_station, lon_col].values
-            lat2 = stations.loc[stations[station_col] == to_station, lat_col].values
-            lon2 = stations.loc[stations[station_col] == to_station, lon_col].values
-            if lat1.size and lon1.size and lat2.size and lon2.size:
-                distance_km = geodesic((float(lat1[0]), float(lon1[0])), (float(lat2[0]), float(lon2[0]))).km
-                return distance_km / AVG_SPEED_KMH * 60
-    except Exception:
-        pass
-
-    # 3) Last resort fallback
-    return DEFAULT_EDGE_TIME
-
-# --- Check for missing stations in mapping vs edges (warn) ---
-missing_stations = set(edges[source_col].unique()).union(set(edges[target_col].unique())) - set(stations[station_col].unique())
-if missing_stations:
-    st.warning(f"⚠️ Missing stations in station_line_mapping.csv (these appear in edges_table): {missing_stations}")
-
-# --- Build Graph dynamically ---
+# ---------------- GRAPH ----------------
 G = nx.Graph()
-for _, row in stations.iterrows():
-    node_name = row[station_col]
-    # attach line info if available
-    attrs = {}
-    if line_col in stations.columns:
-        attrs['line'] = row.get(line_col)
-    G.add_node(node_name, **attrs)
+for _, r in stations.iterrows():
+    G.add_node(
+        r["station_name"],
+        lat=r["latitude"],
+        lon=r["longitude"]
+    )
 
-for _, row in edges.iterrows():
-    a = row[source_col]
-    b = row[target_col]
-    edge_line = row.get(line_col) if line_col in row.index else None
-    # weight: prefer explicit travel_time_min from edges, else calculate
-    edge_time = None
-    if time_col in edges.columns:
-        try:
-            v = row[time_col]
-            edge_time = float(v)
-        except Exception:
-            edge_time = None
-    if edge_time is None:
-        edge_time = calculate_travel_time(a, b)
+for _, r in edges.iterrows():
+    G.add_edge(
+        r["from_station"],
+        r["to_station"],
+        weight=float(r.get("travel_time_min", 2)),
+        line=r["line_name"]
+    )
 
-    # Use edge_line from edges first, fallback to nodes' line if available
-    line_value = edge_line if edge_line is not None else (stations.loc[stations[station_col] == a, line_col].values[0] if line_col in stations.columns and not stations.loc[stations[station_col] == a].empty else None)
+# ---------------- HEADER ----------------
+h1, h2 = st.columns([6,1])
+with h1:
+    st.title("🚇 Delhi Metro Route Finder")
+with h2:
+    st.markdown("<div style='height:38px'></div>", unsafe_allow_html=True)
+    if st.button("🗺 View Map"):
+        st.session_state.show_map = not st.session_state.get("show_map", False)
 
-    G.add_edge(a, b, weight=edge_time, line=line_value)
+# ---------------- INPUTS (NO PREFILLED STATION) ----------------
+station_list = ["-- Select Station --"] + sorted(G.nodes)
 
-# --- Streamlit UI ---
-st.title("🚇 Delhi Metro Route Finder")
+source = st.selectbox("🚉 Source Station", station_list, index=0)
+target = st.selectbox("🎯 Destination Station", station_list, index=0)
 
-# protect if graph nodes empty
-if len(G.nodes) == 0:
-    st.error("Graph has no stations. Check your CSVs.")
-    st.stop()
+# ---------------- MAP ----------------
+if st.session_state.get("show_map", False):
+    st.image("data/Delhi_metro_map.png", use_container_width=True)
+    st.markdown("---")
 
-source = st.selectbox("Select Source Station", sorted(list(G.nodes())))
-target = st.selectbox("Select Destination Station", sorted(list(G.nodes())))
+# ---------------- ROUTE ----------------
+if st.button("🚆 Get Route"):
 
-if st.button("Get Route"):
-    try:
-        path = nx.shortest_path(G, source=source, target=target, weight="weight")
-        route_steps = []
-        total_time = 0.0
-        prev_line = None
-        last_change_station = None
+    if source == "-- Select Station --" or target == "-- Select Station --":
+        st.warning("⚠️ Please select both Source and Destination stations")
+        st.stop()
 
-        for i in range(len(path) - 1):
-            current = path[i]
-            nxt = path[i + 1]
+    path = nx.shortest_path(G, source, target, weight="weight")
 
-            edge_data = G[current][nxt]
-            raw_line = edge_data.get("line") or ""
-            edge_line = str(raw_line).strip().lower()
-            edge_time = edge_data.get("weight", DEFAULT_EDGE_TIME) or DEFAULT_EDGE_TIME
+    # distance
+    distance = 0
+    for i in range(len(path)-1):
+        distance += geodesic(
+            (G.nodes[path[i]]["lat"], G.nodes[path[i]]["lon"]),
+            (G.nodes[path[i+1]]["lat"], G.nodes[path[i+1]]["lon"])
+        ).km
 
-            total_time += float(edge_time) + DWELL_TIME
+    fare = dmrc_fare(distance)
+    est_time = int((distance/35)*60 + len(path)*0.4)
 
-            # Detect interchange only when line truly changes (and not already changed at same station)
-            if prev_line and prev_line != edge_line and last_change_station != current:
-                route_steps.append(
-                    f"➡️ Change from **{prev_line.title()} Line** to **{raw_line.title() if isinstance(raw_line,str) else raw_line} Line** at **{current}**"
+    # ---------------- SUMMARY ----------------
+    st.markdown(f"""
+    <div style="background:#0e2a47;padding:16px;border-radius:14px;color:white">
+    <h3>🚇 Route Summary</h3>
+    ⏱ {est_time} min &nbsp;&nbsp; ₹ {fare} &nbsp;&nbsp; 🚉 {len(path)} Stations
+    <br><br>
+    <b>From:</b> {source}<br>
+    <b>To:</b> {target}
+    </div>
+    """, unsafe_allow_html=True)
+
+    # ---------------- DETAILS ----------------
+    st.markdown("## 🧭 Route Details")
+    prev_line = None
+
+    for i, s in enumerate(path, start=1):
+        st.markdown(f"<div class='route-box'><b>{i}. {s}</b></div>", unsafe_allow_html=True)
+
+        if i < len(path):
+            curr = path[i-1]
+            nxt = path[i]
+            line = G[curr][nxt]["line"]
+            direction = get_direction(curr, nxt, line)
+
+            if prev_line and prev_line != line:
+                st.markdown(
+                    f"""
+                    <div class='junction-box'>
+                    🔁 <b>Junction</b><br>
+                    Change from {friendly_line(prev_line)} to {friendly_line(line)}<br>
+                    <i>{direction}</i>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
                 )
-                total_time += INTERCHANGE_TIME
-                last_change_station = current
+            prev_line = line
 
-            # Add travel step
-            route_steps.append(f"🚇 Go to **{nxt}** ({raw_line if raw_line else 'Unknown'} Line)")
-            prev_line = edge_line
-
-        # --- Output ---
-
-        # Count total stations (including source & destination)
-        total_stations = len(path)
-
-        st.info(f"📍 Total Stations: **{total_stations}**")
-
-        st.success(f"Fastest route from **{source}** to **{target}**:")
-        for step in route_steps:
-            st.write(step)
-
-        st.metric(label="Estimated Travel Time", value=f"{int(total_time)} min")
-
-    except Exception as e:
-        st.error(f"❌ No route found between selected stations. Error: {e}")
-
-#jdjjd
-# x=10
-# y=x
-# x+=5
-# print(y)
+# ---------------- FOOTER ----------------
+st.markdown("""
+<div class="footer">
+Developed with ❤️ by <b>Akash Sharma</b>
+</div>
+""", unsafe_allow_html=True)

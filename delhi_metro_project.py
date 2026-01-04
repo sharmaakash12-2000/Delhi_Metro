@@ -3,6 +3,7 @@ import pandas as pd
 import networkx as nx
 from geopy.distance import geodesic
 import os
+import openpyxl
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(page_title="Delhi Metro Route Finder", layout="wide")

@@ -66,9 +66,9 @@ def dmrc_fare(dist):
 # ---------------- LOAD DATA ----------------
 @st.cache_data
 def load_data():
-    sm = pd.read_excel("data/stations_master.xlsx")
-    lm = pd.read_csv("data/station_line_mapping.csv")
-    ed = pd.read_csv("data/edges_table.csv")
+    sm = pd.read_excel("stations_master.xlsx")
+    lm = pd.read_csv("station_line_mapping.csv")
+    ed = pd.read_csv("edges_table.csv")
 
     for df in [sm, lm, ed]:
         df.columns = df.columns.str.lower().str.strip()
@@ -132,7 +132,7 @@ target = st.selectbox("🎯 Destination Station", station_list, index=0)
 
 # ---------------- MAP ----------------
 if st.session_state.get("show_map", False):
-    st.image("data/Delhi_metro_map.png", use_container_width=True)
+    st.image("Delhi_metro_map.png", use_container_width=True)
     st.markdown("---")
 
 # ---------------- ROUTE ----------------

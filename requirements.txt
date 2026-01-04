@@ -3,8 +3,3 @@ pandas
 numpy
 geopy
 networkx
-
-
-
-
-

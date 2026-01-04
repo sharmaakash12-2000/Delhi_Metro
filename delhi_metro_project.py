@@ -119,17 +119,17 @@ for _, r in edges.iterrows():
 # ---------------- HEADER ----------------
 h1, h2 = st.columns([6,1])
 with h1:
-    st.title("🚇 Delhi Metro Route Finder")
+    st.title(" Delhi Metro Route Finder")
 with h2:
     st.markdown("<div style='height:38px'></div>", unsafe_allow_html=True)
-    if st.button("🗺 View Map"):
+    if st.button(" View Map"):
         st.session_state.show_map = not st.session_state.get("show_map", False)
 
 # ---------------- INPUTS (NO PREFILLED STATION) ----------------
 station_list = ["-- Select Station --"] + sorted(G.nodes)
 
-source = st.selectbox("🚉 Source Station", station_list, index=0)
-target = st.selectbox("🎯 Destination Station", station_list, index=0)
+source = st.selectbox(" Source Station", station_list, index=0)
+target = st.selectbox(" Destination Station", station_list, index=0)
 
 # ---------------- MAP ----------------
 if st.session_state.get("show_map", False):
@@ -160,7 +160,7 @@ if st.button("🚆 Get Route"):
     st.markdown(f"""
     <div style="background:#0e2a47;padding:16px;border-radius:14px;color:white">
     <h3>🚇 Route Summary</h3>
-    ⏱ {est_time} min &nbsp;&nbsp; ₹ {fare} &nbsp;&nbsp; 🚉 {len(path)} Stations
+    ⏱ {est_time} min &nbsp;&nbsp; ₹ {fare} &nbsp;&nbsp;  {len(path)} Stations
     <br><br>
     <b>From:</b> {source}<br>
     <b>To:</b> {target}
@@ -168,7 +168,7 @@ if st.button("🚆 Get Route"):
     """, unsafe_allow_html=True)
 
     # ---------------- DETAILS ----------------
-    st.markdown("## 🧭 Route Details")
+    st.markdown("##  Route Details")
     prev_line = None
 
     for i, s in enumerate(path, start=1):

@@ -108,9 +108,9 @@ def calculate_time(dist, stations, changes):
 # ---------------- LOAD DATA ----------------
 @st.cache_data
 def load_data():
-    sm = pd.read_excel("data/stations_master.xlsx")
-    lm = pd.read_csv("data/station_line_mapping.csv")
-    ed = pd.read_csv("data/edges_table.csv")
+    sm = pd.read_excel("stations_master.xlsx")
+    lm = pd.read_csv("station_line_mapping.csv")
+    ed = pd.read_csv("edges_table.csv")
 
     for df in [sm, lm, ed]:
         df.columns = df.columns.str.lower().str.strip()

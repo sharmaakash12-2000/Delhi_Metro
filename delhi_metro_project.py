@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 import networkx as nx
 from geopy.distance import geodesic
-import os
-import openpyxl
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(page_title="Delhi Metro Route Finder", layout="wide")
@@ -19,7 +17,7 @@ st.markdown("""
     padding:12px 16px;
     border-radius:10px;
     margin-bottom:6px;
-    border-left:5px solid #38bdf8;
+    border-left:6px solid var(--line-color);
 }
 
 .junction-box {
@@ -27,6 +25,14 @@ st.markdown("""
     margin-bottom:14px;
     color:#facc15;
     font-size:14px;
+}
+
+.badge {
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:18px;
+    font-size:13px;
+    margin-right:6px;
 }
 
 .footer {
@@ -38,24 +44,50 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- LINE NAME MAP ----------------
-LINE_NAME_MAP = {
-    "B_DN_R": "Blue Line",
-    "B_DV_R": "Blue Line",
-    "Y_QV_R": "Yellow Line",
-    "R_RD_R": "Red Line",
-    "P_MS_R": "Pink Line",
-    "V_KR_R": "Violet Line",
-    "M_JB_R": "Magenta Line",
-    "G_KB_R": "Green Line",
-    "A_NN_R": "Aqua Line",
-    "O_DN_R": "Airport Express Line"
+# ---------------- LINE INFO ----------------
+LINE_INFO = {
+    "B_DN_R": {"name": "Blue Line", "color": "#1e88e5"},
+    "B_DV_R": {"name": "Blue Line", "color": "#1e88e5"},
+    "Y_QV_R": {"name": "Yellow Line", "color": "#facc15"},
+    "R_RS_R":   {"name": "Red Line", "color": "#ef4444"},
+    "R_RD":   {"name": "Red Line", "color": "#ef4444"},
+    "P_MS":   {"name": "Pink Line", "color": "#ec4899"},
+    "P_MS_R": {"name": "Pink Line", "color": "#ec4899"},
+    "V_KR":   {"name": "Violet Line", "color": "#8b5cf6"},
+    "V_KR_R": {"name": "Violet Line", "color": "#8b5cf6"},
+    "M_JB":   {"name": "Magenta Line", "color": "#d946ef"},
+    "M_JB_R":   {"name": "Magenta Line", "color": "#d946ef"},
+    "G_KB":   {"name": "Green Line", "color": "#22c55e"},
+    "A_NN":   {"name": "Aqua Line", "color": "#06b6d4"},
+    "O_DN":   {"name": "Airport Express", "color": "#f97316"}
 }
 
-def friendly_line(code):
-    return LINE_NAME_MAP.get(code, code)
+def line_name(code):
+    return LINE_INFO.get(code, {}).get("name", code)
 
-# ---------------- DMRC FARE ----------------
+def line_color(code):
+    return LINE_INFO.get(code, {}).get("color", "#38bdf8")
+
+# ---------------- PLATFORM RULES ----------------
+PLATFORM_RULES = {
+    "B_DN_R": {"forward": 2, "reverse": 1},
+    "B_DV_R": {"forward": 2, "reverse": 1},
+    "Y_QV_R": {"forward": 2, "reverse": 1},
+    "R_RD":   {"forward": 1, "reverse": 2},
+    "P_MS":   {"forward": 3, "reverse": 4},
+    "P_MS_R": {"forward": 3, "reverse": 4},
+    "V_KR":   {"forward": 2, "reverse": 1},
+    "V_KR_R": {"forward": 2, "reverse": 1},
+    "M_JB":   {"forward": 2, "reverse": 1},
+    "G_KB":   {"forward": 1, "reverse": 2},
+    "A_NN":   {"forward": 2, "reverse": 1},
+    "O_DN":   {"forward": 3, "reverse": 1},
+}
+
+def get_platform(line_code, direction):
+    return f"Platform {PLATFORM_RULES.get(line_code, {}).get(direction, 1)}"
+
+# ---------------- FARE ----------------
 def dmrc_fare(dist):
     if dist <= 2: return 11
     if dist <= 5: return 21
@@ -64,18 +96,27 @@ def dmrc_fare(dist):
     if dist <= 32: return 54
     return 64
 
+# ---------------- TIME ----------------
+BASE_SPEED = 28
+DWELL = 0.8
+INTERCHANGE = 4
+
+def calculate_time(dist, stations, changes):
+    travel = (dist / BASE_SPEED) * 60
+    return int(round(travel + stations * DWELL + changes * INTERCHANGE))
+
 # ---------------- LOAD DATA ----------------
 @st.cache_data
 def load_data():
-    sm = pd.read_excel("stations_master.xlsx")
-    lm = pd.read_csv("station_line_mapping.csv")
-    ed = pd.read_csv("edges_table.csv")
+    sm = pd.read_excel("data/stations_master.xlsx")
+    lm = pd.read_csv("data/station_line_mapping.csv")
+    ed = pd.read_csv("data/edges_table.csv")
 
     for df in [sm, lm, ed]:
         df.columns = df.columns.str.lower().str.strip()
 
     lm = lm.merge(
-        sm[["station_name","latitude","longitude"]],
+        sm[["station_name", "latitude", "longitude"]],
         on="station_name",
         how="left"
     )
@@ -83,30 +124,27 @@ def load_data():
 
 stations, edges = load_data()
 
-# ---------------- HELPERS ----------------
-def get_line_terminals(line):
-    df = stations[stations["line_name"] == line].sort_values("sequence_order")
-    if df.empty:
-        return None, None
-    return df.iloc[0]["station_name"], df.iloc[-1]["station_name"]
-
-def get_direction(curr, nxt, line):
+# ---------------- DIRECTION + PLATFORM ----------------
+def get_boarding_info(curr, nxt, line):
     df = stations[stations["line_name"] == line]
     c = df[df["station_name"] == curr]["sequence_order"].values
     n = df[df["station_name"] == nxt]["sequence_order"].values
-    if len(c)==0 or len(n)==0:
-        return None
-    start, end = get_line_terminals(line)
-    return f"Towards {end}" if n[0] > c[0] else f"Towards {start}"
+
+    if len(c) == 0 or len(n) == 0:
+        return "Towards terminal", "Platform 1"
+
+    start = df.sort_values("sequence_order").iloc[0]["station_name"]
+    end   = df.sort_values("sequence_order").iloc[-1]["station_name"]
+
+    if n[0] > c[0]:
+        return f"Towards {end}", get_platform(line, "forward")
+    else:
+        return f"Towards {start}", get_platform(line, "reverse")
 
 # ---------------- GRAPH ----------------
 G = nx.Graph()
 for _, r in stations.iterrows():
-    G.add_node(
-        r["station_name"],
-        lat=r["latitude"],
-        lon=r["longitude"]
-    )
+    G.add_node(r["station_name"], lat=r["latitude"], lon=r["longitude"])
 
 for _, r in edges.iterrows():
     G.add_edge(
@@ -116,51 +154,57 @@ for _, r in edges.iterrows():
         line=r["line_name"]
     )
 
-# ---------------- HEADER ----------------
+# ---------------- HEADER + MAP ----------------
+if "show_map" not in st.session_state:
+    st.session_state.show_map = False
+
 h1, h2 = st.columns([6,1])
 with h1:
-    st.title(" Delhi Metro Route Finder")
+    st.title("🚇 Delhi Metro Route Finder")
 with h2:
     st.markdown("<div style='height:38px'></div>", unsafe_allow_html=True)
-    if st.button(" View Map"):
-        st.session_state.show_map = not st.session_state.get("show_map", False)
+    if st.button("🗺 View Map"):
+        st.session_state.show_map = not st.session_state.show_map
 
-# ---------------- INPUTS (NO PREFILLED STATION) ----------------
-station_list = ["-- Select Station --"] + sorted(G.nodes)
-
-source = st.selectbox(" Source Station", station_list, index=0)
-target = st.selectbox(" Destination Station", station_list, index=0)
-
-# ---------------- MAP ----------------
-if st.session_state.get("show_map", False):
-    st.image("Delhi_metro_map.png", use_container_width=True)
+if st.session_state.show_map:
+    st.image("data/Delhi_metro_map.png", use_container_width=True)
     st.markdown("---")
 
+# ---------------- INPUTS ----------------
+source = st.selectbox("🚉 Source Station", sorted(G.nodes), index=None, placeholder="Search station...")
+target = st.selectbox("🎯 Destination Station", sorted(G.nodes), index=None, placeholder="Search station...")
+
 # ---------------- ROUTE ----------------
-if st.button("🚆 Get Route"):
-
-    if source == "-- Select Station --" or target == "-- Select Station --":
-        st.warning("⚠️ Please select both Source and Destination stations")
-        st.stop()
-
+if st.button("🚆 Get Route") and source and target:
     path = nx.shortest_path(G, source, target, weight="weight")
 
-    # distance
-    distance = 0
-    for i in range(len(path)-1):
-        distance += geodesic(
+    distance = sum(
+        geodesic(
             (G.nodes[path[i]]["lat"], G.nodes[path[i]]["lon"]),
             (G.nodes[path[i+1]]["lat"], G.nodes[path[i+1]]["lon"])
         ).km
+        for i in range(len(path)-1)
+    )
+
+    prev = None
+    changes = 0
+    for i in range(len(path)-1):
+        l = G[path[i]][path[i+1]]["line"]
+        if prev and prev != l:
+            changes += 1
+        prev = l
 
     fare = dmrc_fare(distance)
-    est_time = int((distance/35)*60 + len(path)*0.4)
+    time = calculate_time(distance, len(path), changes)
 
     # ---------------- SUMMARY ----------------
     st.markdown(f"""
-    <div style="background:#0e2a47;padding:16px;border-radius:14px;color:white">
+    <div style="background:#0e2a47;padding:18px;border-radius:14px;color:white">
     <h3>🚇 Route Summary</h3>
-    ⏱ {est_time} min &nbsp;&nbsp; ₹ {fare} &nbsp;&nbsp;  {len(path)} Stations
+    <span class="badge" style="background:#1e88e5">⏱ {time} min</span>
+    <span class="badge" style="background:#22c55e">₹ {fare}</span>
+    <span class="badge" style="background:#9333ea">🚉 {len(path)} Stations</span>
+    <span class="badge" style="background:#f59e0b">🔁 {changes} Change</span>
     <br><br>
     <b>From:</b> {source}<br>
     <b>To:</b> {target}
@@ -168,30 +212,49 @@ if st.button("🚆 Get Route"):
     """, unsafe_allow_html=True)
 
     # ---------------- DETAILS ----------------
-    st.markdown("##  Route Details")
-    prev_line = None
+    st.markdown("## 🧭 Route Details")
+
+    first_line = G[path[0]][path[1]]["line"]
+    direction, platform = get_boarding_info(path[0], path[1], first_line)
+
+    st.markdown(
+        f"""
+        <div style="margin:12px 0 18px 14px;color:#38bdf8">
+        🚇 <b>Board {line_name(first_line)}</b><br>
+        ➡ {direction}<br>
+        🚉 {platform}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    prev_line = first_line
 
     for i, s in enumerate(path, start=1):
-        st.markdown(f"<div class='route-box'><b>{i}. {s}</b></div>", unsafe_allow_html=True)
-
+        line = None
         if i < len(path):
-            curr = path[i-1]
-            nxt = path[i]
-            line = G[curr][nxt]["line"]
-            direction = get_direction(curr, nxt, line)
+            line = G[path[i-1]][path[i]]["line"]
 
-            if prev_line and prev_line != line:
-                st.markdown(
-                    f"""
-                    <div class='junction-box'>
-                    🔁 <b>Junction</b><br>
-                    Change from {friendly_line(prev_line)} to {friendly_line(line)}<br>
-                    <i>{direction}</i>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
-            prev_line = line
+        st.markdown(
+            f"<div class='route-box' style='--line-color:{line_color(line)}'><b>{i}. {s}</b></div>",
+            unsafe_allow_html=True
+        )
+
+        if prev_line and line and prev_line != line:
+            direction, platform = get_boarding_info(path[i-1], path[i], line)
+            st.markdown(
+                f"""
+                <div class='junction-box'>
+                🔁 <b>Junction</b><br>
+                Change from {line_name(prev_line)} to {line_name(line)}<br>
+                ➡ {direction}<br>
+                🚉 {platform}
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+
+        prev_line = line
 
 # ---------------- FOOTER ----------------
 st.markdown("""

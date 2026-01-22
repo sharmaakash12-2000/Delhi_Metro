@@ -167,7 +167,7 @@ with h2:
         st.session_state.show_map = not st.session_state.show_map
 
 if st.session_state.show_map:
-    st.image("data/Delhi_metro_map.png", use_container_width=True)
+    st.image("Delhi_metro_map.png", use_container_width=True)
     st.markdown("---")
 
 # ---------------- INPUTS ----------------
